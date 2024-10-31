@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+</head>
+<body>
+  <p><h3>Upload Image To SQLite Database</h3></p>
+<hr><br>
+<form method="post" novalidate enctype="multipart/form-data">
+    {{ form.csrf_token}}
+  <p>
+    {{ form.image.label }}
+      {{ form.image(type="file") }}
+      {{ form.submit() }}
+  </p>
+</form>
+
+</body>
+</html>
