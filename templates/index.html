@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Upload</title>
-</head>
-<body>
-  <p><h3>Upload Image To SQLite Database</h3></p>
-<hr><br>
-<form method="post" novalidate enctype="multipart/form-data">
-    {{ form.csrf_token}}
-  <p>
-    {{ form.image.label }}
-      {{ form.image(type="file") }}
-      {{ form.submit() }}
-  </p>
-</form>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}{% endblock %}
+
+{% block body %}
+  <p><h3>Upload Image To SQLite Database</h3></p>
+    <hr><br>
+    <form class="" method="post" novalidate enctype="multipart/form-data">
+        {{ form.csrf_token}}
+        <div class="form-floating mb-3" >
+            {{ form.lname(class="form-control",placeholder="Last Name",id="floatingInput",autofocus="on") }}
+            <span>
+                {% for error in form.lname.errors %} <br>
+                    <span style="color: red;">{{error}}</span>
+                {% endfor %}
+            </span>
+        </div>
+
+        <p>
+            {{ form.fname.label }}
+            {{ form.fname (class="form-control")}}
+        </p>
+        <p>
+            {{ form.image.label }}
+            {{ form.image(type="file") }}
+        </p>
+
+        <p>
+            {{ form.submit(class="btn btn-primary") }}
+        </p>
+
+    </form>
+{% endblock %}

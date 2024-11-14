@@ -33,15 +33,17 @@ def index():
     if request.method == 'POST':
         # file = request.files['file']
         file = form.image.data
-        print(file)
+        lname = form.lname.data.upper().strip()
+        fname = form.fname.data.title().strip()
+
         if file.filename == '':
             return 'No file part!'
         if file:
-            filename = secure_filename(file.filename)
+            filename = secure_filename(file.filename+'_'+lname+'_'+fname).lower()
             name = filename
             img = file.read()
             mimetype = file.mimetype
-            cursor.execute('INSERT INTO upload(img,name,mimetype) VALUES (?,?,?)',(img,name,mimetype))
+            cursor.execute('INSERT INTO upload (lname,fname,img,name,mimetype) VALUES (?,?,?,?,?)',(lname,fname,img,name,mimetype))
             conn.commit()
             return 'File uploaded.'
 
