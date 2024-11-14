@@ -2,7 +2,8 @@ from flask import Flask,render_template,url_for,request,Response
 import sqlite3
 from form import *
 from werkzeug.utils import secure_filename
-import uuid
+from uuid import uuid4
+import cv2
 
 ALLOWED_EXTENSIONS = {'png','jpg','jpeg','gif'}
 conn = sqlite3.connect('mydata.db',timeout=30,check_same_thread=False)
