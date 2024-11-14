@@ -56,7 +56,7 @@ def get_img(id):
     res = cursor.fetchone()
     if not res:
         return 'Image not found!'
-    return Response(res[1],mimetype=res[3])
+    return Response(res[3],mimetype=res[5])
 
 if __name__ == '__main__':
     app.run(debug=True)

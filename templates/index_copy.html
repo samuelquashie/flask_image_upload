@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+  <p><h3>Upload Image To SQLite Database</h3></p>
+    <hr><br>
+    <form method="post" novalidate enctype="multipart/form-data">
+        {{ form.csrf_token}}
+        <p>
+            {{ form.lname.label }}
+            {{ form.lname}}
+        </p>
+
+        <p>
+            {{ form.fname.label }}
+            {{ form.fname}}
+        </p>
+        <p>
+            {{ form.image.label }}
+            {{ form.image(type="file") }}
+        </p>
+
+        <p>
+            {{ form.submit() }}
+        </p>
+
+    </form>
+    {% endblock %}
